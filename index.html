@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>元素タイムアタック</title>
+  <meta name="description" content="中学理科の元素記号・化学式・イオン・化学反応式を60秒タイムアタックで覚えよう！">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ホーム -->
+  <main id="home" class="screen active">
+    <header class="hero">
+      <div class="hero-atoms" aria-hidden="true"><span>H</span><span>O</span><span>Na</span><span>Cu</span></div>
+      <h1>元素タイムアタック</h1>
+      <p>60秒で何問答えられる？<br>元素記号から化学反応式まで、レベルアップしながら覚えよう！</p>
+    </header>
+    <div id="levels" class="levels"></div>
+    <div class="home-actions">
+      <button id="zukan-btn" class="btn primary">📖 ずかんで確認する</button>
+      <button id="sound-btn" class="btn">🔊 音あり</button>
+    </div>
+    <footer class="home-foot">
+      <button id="unlock-all" class="link">全レベル解放（先生用）</button>
+      <button id="reset-btn" class="link">記録をリセット</button>
+    </footer>
+  </main>
+
+  <!-- ゲーム -->
+  <main id="game" class="screen">
+    <div class="g-top">
+      <button class="btn small" data-home>✕ やめる</button>
+      <span id="g-level" class="g-level"></span>
+    </div>
+    <div class="hud">
+      <div class="hud-box"><span class="hud-label">のこり</span><span id="g-time" class="hud-time">60</span><span class="hud-unit">秒</span></div>
+      <div id="g-combo" class="g-combo"></div>
+      <div class="hud-box"><span class="hud-label">正解</span><span id="g-score" class="hud-score">0</span><span class="hud-unit">問</span></div>
+    </div>
+    <div class="bar"><div id="g-bar"></div></div>
+
+    <div id="countdown" class="countdown" hidden>3</div>
+
+    <section id="q-card" class="q-card" hidden>
+      <div id="q-prompt" class="q-prompt"></div>
+      <div id="q-sub" class="q-sub"></div>
+      <div id="choices" class="choices"></div>
+      <form id="type-form" class="type-form" hidden autocomplete="off">
+        <input id="type-input" type="text" inputmode="latin" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="3" placeholder="例：Na" aria-label="元素記号">
+        <button type="submit" class="btn primary">答える</button>
+      </form>
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- 結果 -->
+  <main id="result" class="screen">
+    <div class="r-card">
+      <div id="r-level" class="r-level"></div>
+      <div class="r-head">
+        <div id="r-rank" class="big-rank">S</div>
+        <div>
+          <div class="r-score"><span id="r-score">0</span><small>問 正解</small></div>
+          <div id="r-new" class="r-new" hidden>🏆 ベスト記録更新！</div>
+        </div>
+      </div>
+      <p id="r-msg" class="r-msg"></p>
+      <div class="r-stats">
+        <div><span>正答率</span><b id="r-acc">-</b></div>
+        <div><span>最大コンボ</span><b id="r-combo">0</b></div>
+        <div><span>ベスト</span><b id="r-best">-</b></div>
+      </div>
+      <p id="r-unlock" class="r-unlock" hidden></p>
+      <div class="r-buttons">
+        <button id="r-retry" class="btn primary">🔁 もう一度</button>
+        <button id="r-next" class="btn accent">次のレベルへ ▶</button>
+        <button class="btn" data-home>🏠 レベル選択</button>
+      </div>
+    </div>
+    <div class="r-card">
+      <h2>ふりかえり（まちがえた問題）</h2>
+      <ul id="r-mistakes" class="r-mistakes"></ul>
+    </div>
+  </main>
+
+  <!-- ずかん -->
+  <main id="zukan" class="screen">
+    <div class="g-top">
+      <button class="btn small" data-home>← もどる</button>
+      <h2 class="z-title">📖 ずかん</h2>
+    </div>
+    <nav id="z-tabs" class="tabs"></nav>
+    <div id="z-body" class="z-body"></div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
